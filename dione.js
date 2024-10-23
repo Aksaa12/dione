@@ -5,18 +5,19 @@ const fs = require('fs');
 const privateKey = fs.readFileSync('data.txt', 'utf8').trim();
 const walletAddress = "0xYourWalletAddress";  // Ganti dengan alamat wallet Anda
 
-// URL faucet untuk Dione Odyssey Testnet
-const faucetUrl = 'https://testnet.odysseyscan.com/api/faucet';
+// URL JSON-RPC untuk Dione Odyssey Testnet
+const jsonRpcUrl = "https://testnet.odysseyscan.com";
 
-// Data yang akan dikirim
+// Data yang akan dikirim ke faucet
 const data = {
-    privateKey: privateKey,
-    address: walletAddress,
-    amount: 2000,  // Jumlah token yang diminta (2000 Dione)
+    jsonrpc: "2.0",
+    method: "faucet",
+    params: [walletAddress, 2000, privateKey],  // Alamat wallet, jumlah Dione, dan private key
+    id: 1,
 };
 
-// Melakukan permintaan ke faucet
-axios.post(faucetUrl, data)
+// Melakukan permintaan ke faucet menggunakan JSON-RPC
+axios.post(jsonRpcUrl, data)
     .then(response => {
         console.log("Permintaan berhasil:", response.data);
     })
