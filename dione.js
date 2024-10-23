@@ -3,7 +3,7 @@ const fs = require('fs');
 
 // Membaca private key dari file
 const privateKey = fs.readFileSync('data.txt', 'utf8').trim();
-const walletAddress = "0xYourWalletAddress";  // Ganti dengan alamat wallet Anda
+const walletAddress = "0x5fbE09A0BF35312368E3729E92D0335F8150b705";  // Ganti dengan alamat wallet Anda
 
 // URL JSON-RPC untuk Dione Odyssey Testnet
 const jsonRpcUrl = "https://testnet.odysseyscan.com";
