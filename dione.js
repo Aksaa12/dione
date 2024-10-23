@@ -19,5 +19,14 @@ axios.post(faucetUrl, data)
         console.log("Permintaan berhasil:", response.data);
     })
     .catch(error => {
-        console.error("Permintaan gagal:", error.response ? error.response.data : error.message);
+        if (error.response) {
+            // Jika server merespons dengan status yang tidak dalam rentang 2xx
+            console.error("Permintaan gagal:", error.response.data);
+        } else if (error.request) {
+            // Jika permintaan dibuat tetapi tidak ada respons
+            console.error("Permintaan gagal: tidak ada respons dari server", error.request);
+        } else {
+            // Kesalahan lain
+            console.error("Permintaan gagal:", error.message);
+        }
     });
