@@ -8,15 +8,15 @@ const walletAddress = "0x5fbE09A0BF35312368E3729E92D0335F8150b705";  // Ganti de
 // URL JSON-RPC untuk Dione Odyssey Testnet
 const jsonRpcUrl = "https://testnet.odysseyscan.com";
 
-// Data yang akan dikirim ke faucet
+// Data yang akan dikirim
 const data = {
     jsonrpc: "2.0",
-    method: "faucet",
-    params: [walletAddress, 2000, privateKey],  // Alamat wallet, jumlah Dione, dan private key
+    method: "faucet",  // Pastikan metode ini benar
+    params: [walletAddress, 2000, privateKey],  // Sesuaikan parameter jika diperlukan
     id: 1,
 };
 
-// Melakukan permintaan ke faucet menggunakan JSON-RPC
+// Melakukan permintaan
 axios.post(jsonRpcUrl, data)
     .then(response => {
         console.log("Permintaan berhasil:", response.data);
